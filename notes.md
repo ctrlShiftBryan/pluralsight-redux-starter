@@ -70,9 +70,13 @@
 
     * creates container components
     * ```
+      # determines what state will be available on function via props
+      # filter or transform state
       function mapStateToProps(state, ownProps) {
         return {appState: state.authorReducer};
       }
+      ```
+
 
       export default connect(
         mapStateToProps,
@@ -93,6 +97,8 @@
       ```
 
     * Memoize reselect to reduce expensive mapStateToProps work can increase performance, filter list or making expensive calcs
+    * like caching for function calls since mapStateToProps is called often
+    * what actions to expose not what state
     * ```
       function mapDispathToProps(dispatch) {
         return {
@@ -100,3 +106,17 @@
         };
       }
       ```
+
+        * how to expose actions to proponents
+          1. ignore - and call manually in componenets (doesnt abstract redux)
+          2. manually wraper (lets do this to start?)
+          3. bindActionsCreators (most magical) - actions
+        * makes easier to pass down to child components
+
+
+    * 5 major peices of a container component w/ redux
+      1. constructor
+      2. child functions
+      3. render
+      4. propTypes
+      5. redux connect and related functions

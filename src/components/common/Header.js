@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link, IndexLink } from 'react-router';
 const Header = props => {
   return (
@@ -18,7 +17,5 @@ const Header = props => {
     </nav>
   );
 };
-
-Header.propTypes = {};
 
 export default Header;
