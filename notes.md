@@ -153,3 +153,6 @@
 
   * \_SUCCESS
   * \_FAILURE or \_ERROR
+
+* REDUX!
+* "Remember, Redux is most useful for larger complex apps. On trivial apps like this, the boilerplate may feel tedious, but the larger the app and the more comfortable that you get with this flow, the more this architecture is going to pay off in scalability, maintainability, and clarity through consistency."
