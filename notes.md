@@ -120,3 +120,36 @@
       3. render
       4. propTypes
       5. redux connect and related functions
+
+# Async
+
+* middleware - libraries
+
+  * thunk - dan a.
+    * function instead of objects
+    * clunky to test
+    * easy to learn
+  * promise
+  * saga (es6 generators) - dsl
+
+    * generators (yeild statements)
+    * easier to test
+    * harder to learn
+
+  * thunk example
+  * return a function from a function
+
+  ```
+  export function deleteAuthor(authorID) {
+    return dispatch => {
+      return AuthorApi.deleteAuthor(authorID).then(() => {
+        dispatch(deletedAuthor(authorId));
+      }).catch(handleError)
+    }
+  }
+  ```
+
+* action naming conventions
+
+  * \_SUCCESS
+  * \_FAILURE or \_ERROR
