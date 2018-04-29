@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import * as CourseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm.jsx';
 import toastr from 'toastr';
+import { authorsFormattedForDropdown } from '../../selectors/selectors';
 
-class ManageCoursePage extends Component {
+export class ManageCoursePage extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -48,6 +49,10 @@ class ManageCoursePage extends Component {
 
   saveCourse(event) {
     event.preventDefault();
+
+    if (!this.courseFormIsValid()) {
+      return;
+    }
 
     this.setState({ saving: true });
 
@@ -108,12 +113,8 @@ function mapStateToProps(state, ownProps) {
     course = getCourseById(state.courses, courseId);
   }
 
-  const authors = state.authors.map(author => {
-    return {
-      value: author.id,
-      text: author.firstName + ' ' + author.lastName
-    };
-  });
+  const authors = authorsFormattedForDropdown(state.authors);
+
   return { course, authors };
 }
 
@@ -128,5 +129,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(CourseActions, dispatch)
   };
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);

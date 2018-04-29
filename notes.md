@@ -156,3 +156,77 @@
 
 * REDUX!
 * "Remember, Redux is most useful for larger complex apps. On trivial apps like this, the boilerplate may feel tedious, but the larger the app and the more comfortable that you get with this flow, the more this architecture is going to pay off in scalability, maintainability, and clarity through consistency."
+
+# Testing
+
+* framework - mocha (alt. AVA, Jasmine, Jest)
+* assertion library - expect (alt. chai)
+* helper library for test
+
+  * react test utils - NOT TERSE
+    * shallowRender, single component, no DOM
+    * renderIntoDocument, DOM required, findRenderedDOMComponent
+    * Simulate (event, clicks, keypress, etc)
+  * Enzyme
+    * find (more like jquery)
+    * shallow rendering
+    * check api docs on airbnb github
+  * What is Enzyme
+    * abstraction ontop of React Test Utils
+    * JSDOM (in memory DOM)
+    * CHeerio (jquery like selectors)
+
+* Where to test
+
+  * karma
+  * headless browser phantomJS
+  * In-memory DOM
+
+* Where to place test
+
+  * ALONG SIDE !!!
+  * CLEAR VISIBILITY
+  * Easy Imports
+  * easy to open both at same time
+  * easy to refactor
+
+* Test presentation components first
+* Shallow Render (no refs or interactions) vs Render into Document
+
+# Testing Redux
+
+* Action creators
+* Thunks
+* Reducers
+* Store
+
+* Testing Container Components - 2 options
+
+  * General
+
+    * Wrap with <Provider> - customs store for test
+    * Add named export for unconnected componenet
+
+    * use mount instead of shallow
+
+  * MapStateToProps
+
+    * extract to simple plain old functions and test those
+
+  * Actions
+
+    * silly to test because they just wrapp in object with type
+    * test is just a duplicate delclaration
+
+  * Testing Reducers
+
+    * redux test recorder?
+    * they are just pure functions so easy to test
+
+  * Testing Thunks
+
+    * needs Mock
+
+  * Testing the store
+
+    * integration testing
